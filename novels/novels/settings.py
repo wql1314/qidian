@@ -16,6 +16,13 @@ NEWSPIDER_MODULE = 'novels.spiders'
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36'
 
+HOST = "111.229.144.195"
+PORT = 3306
+USER = "root"
+PASSWORD = "wang8471268"
+DBNAME = "Novels"
+# CHARSET = "utf8"
+
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
 LOG_LEVEL = 'ERROR'
@@ -26,7 +33,7 @@ LOG_FILE = 'log.txt'
 # Configure a delay for requests for the same website (default: 0)
 # See https://docs.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-#DOWNLOAD_DELAY = 3
+DOWNLOAD_DELAY = 3
 # The download delay setting will honor only one of:
 #CONCURRENT_REQUESTS_PER_DOMAIN = 16
 #CONCURRENT_REQUESTS_PER_IP = 16
@@ -65,6 +72,7 @@ LOG_FILE = 'log.txt'
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
    'novels.pipelines.NovelsPipeline': 300,
+   'novels.pipelines.NovelsMYSQLPipeline':301,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
