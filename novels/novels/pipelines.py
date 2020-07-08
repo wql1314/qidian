@@ -13,7 +13,7 @@ from itemadapter import ItemAdapter
 
 class NovelsPipeline:
     def __init__(self):
-        self.fp = open('qidian.csv', 'w', encoding='utf8')
+        self.fp = open('qidian.scv', 'w', encoding='utf8')
         self.fp.write("小说名")
         self.fp.write("\t")
         self.fp.write("作者名")
@@ -47,7 +47,7 @@ class NovelsPipeline:
             self.fp.write('\t')
             self.fp.write(item['novel_status'][i])
             self.fp.write('\t')
-            self.fp.write(item['novel_brief_introduction'][i])
+            self.fp.write(item['novel_brief_introduction'][i].replace('\n', '').replace('\r', '').lstrip() )
             self.fp.write('\n')
 
             print("小说名: " + novel_name)
@@ -83,7 +83,7 @@ class NovelsMYSQLPipeline:
             novel_author = item['novel_author'][i]
             novel_classification = item['novel_classification'][i]
             novel_status = item['novel_status'][i]
-            novel_brief_introduction = item['novel_brief_introduction'][i]
+            novel_brief_introduction = item['novel_brief_introduction'][i].replace('\n', '').replace('\r', '').lstrip()
             # item_list = []
             # item_list.append(novel_name)
             # item_list.append(novel_author)
